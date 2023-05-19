@@ -37,6 +37,11 @@ def check_winner():
         return button_1.cget("text")
     if button_3.cget("text") == button_5.cget("text") == button_7.cget("text") != " ":
         return button_3.cget("text")
+    
+    if all(button.cget("text") != "" for button in button_list):
+        msgbox.showinfo(f"Information", "Its a Draw \n Game close automatically in few seconds")
+        disable_buttons()
+        root.after(0, root.quit)
 
     return None
 
@@ -66,6 +71,7 @@ def on_button_cpu():
         msgbox.showinfo(f"Congratulations", " CPU wins! \n Game close automatically in few seconds")
         disable_buttons()
         root.after(0, root.quit)
+
         
 
 
